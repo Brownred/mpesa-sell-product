@@ -41,14 +41,25 @@ function Product() {
       return;
     }
 
-    setIsLoading(true);
-    setMessage('Processing payment...');
+    // Calculate total price based on quantity
+    const basePrice = 4000.00;
+    const totalAmount = basePrice * quantity;
 
-    // Simulate STK push request
+    setIsLoading(true);
+    setMessage(`Processing payment of Ksh ${totalAmount.toFixed(2)}...`);
+
     // TODO: Implement STK push request
+    // This would typically include an API call with:
+    // - phone number: ${phoneNumber}
+    // - amount: ${totalAmount}
+    // - product: Nike Air Force 1 '07
+    // - size: ${selectedSize}
+    // - color: ${selectedColor}
+    // - quantity: ${quantity}
+    
     setTimeout(() => {
       setIsLoading(false);
-      setMessage('STK push sent to your phone. Please complete the payment.');
+      setMessage(`STK push of $${totalAmount.toFixed(2)} sent to ${phoneNumber}. Please complete the payment.`);
     }, 2000);
   };
 
@@ -77,7 +88,7 @@ function Product() {
           <span className="stars">★★★★★</span>
           <span className="review-count">(2,458 Reviews)</span>
         </div>
-        <div className="product-price">$110.00</div>
+        <div className="product-price">Ksh 4000.00</div>
         
         <div className="product-description">
           <p>The radiance lives on in the Nike Air Force 1 '07, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.</p>
